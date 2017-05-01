@@ -20,11 +20,10 @@ exset1 = Item 1 (Item 2 (Item 3 Nil))
 exset2 = Item 2 (Item 4 (Item 8 Nil))
 exset3 = Item 3 (Item 2 (Item 1 Nil))
 
-||memberset ::= (set *)-> (set *) -> bool
-||memberset Nil i                 = error "invalid input"
-||memberset i Nil                 = False
-||memberset (Item i n) (Item i s) = True
-||memberset i (Item i s)          = memberset i s
+memberset :: (set *) -> (set *) -> bool
+memberset m Nil                    = False
+memberset (Item m s) (Item v rest) = True, if (m=v)
+                                   = memberset (Item m s) rest, otherwise
 
 || Just a play around function testing things when I couldn't get
 || member to work properly
