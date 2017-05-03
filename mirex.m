@@ -16,4 +16,14 @@
 
 || 2016 3. (c)
 
-f1 (a:b) f x = a ((x f b).f)
+||f1 (a:b) f x = a ((x f b).f)
+
+
+tree ::= Tnil | Node num tree tree
+
+extree = Node 3 (Node 2 Tnil (Node 1 Tnil Tnil)) ((Node 5 (Node 4 Tnil Tnil) Tnil))
+
+treeinsert :: num -> tree -> tree
+treeinsert n Tnil         = Node n Tnil Tnil
+treeinsert n (Node x l r) = Node x (treeinsert n l) r,if (n<x)
+treeinsert n (Node x l r) = Node x l (treeinsert n r),otherwise
